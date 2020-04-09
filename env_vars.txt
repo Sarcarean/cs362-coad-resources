@@ -1,0 +1,11 @@
+set DEV_DB_USERNAME='admin'
+set DEV_DB_PASSWORD='cs362pass'
+set TEST_DB_USERNAME='admin'
+set TEST_DB_PASSWORD='cs362pass'
+set DEFAULT_PASSWORD='cs362pass'
+set ADMINS={admin: "contact@embeddedcomputers.net"}
+set TEST_USER_EMAIL='contact@embeddedcomputers.net'
+set TEST_USER_PASSWORD='cs362pass'
+set RECAPTCHA_SITE_KEY='CHANGEME'
+set RECAPTCHA_SECRET_KEY='CHANGEME'
+set AIRBRAKE_ENV='development'
