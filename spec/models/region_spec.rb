@@ -2,13 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 	
-	it "exists" do
-		Region.new
-	end
-	
+	let(:region) { Region.new }
+		
 	it "has a name" do
-		@region = Region.new
-		expect(@region).to respond_to(:name) 	
+		expect(region).to respond_to(:name) 	
 	end
 	
 end
