@@ -29,8 +29,19 @@ RSpec.describe Region, type: :model do
 	end
 
 	describe "#to_s" do
-		it "has a string representation taht is the name" do
+		it "has a string representation that is the name" do
 			expect(region.to_s).to eq('FAKE')
+		end
+	end
+
+	describe "::unspecified" do 
+		it "creates a new Unspecified region when one does not exist" do
+			expect(Region.where(name: 'Unspecified')).to be_empty
+			expect{ Region.unspecified }.to change { Region.count }.by(1)
+		end
+		it "does not create a new Unspecified region when one already exists" do
+			Region.create(name: 'Unspecified')
+			expect{ Region.unspecified }.to_not change { Region.count}
 		end
 	end
 end
