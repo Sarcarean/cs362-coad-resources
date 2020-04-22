@@ -15,6 +15,12 @@ RSpec.describe Region, type: :model do
 			expect(region).to have_many(:tickets)
 		end
 	end
+
+	describe "validations" do
+		it "validates name" do
+			expect(region).to validate_presence_of(:name)
+		end
+	end
 end
 
 
