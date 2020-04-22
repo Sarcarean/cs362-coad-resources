@@ -43,6 +43,9 @@ RSpec.describe Region, type: :model do
 			Region.create(name: 'Unspecified')
 			expect{ Region.unspecified }.to_not change { Region.count}
 		end
+		it "returns a region with the name 'Unspecified'" do	
+			expect(Region.unspecified.name).to eq('Unspecified')
+		end
 	end
 end
 
