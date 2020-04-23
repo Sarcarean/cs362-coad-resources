@@ -34,9 +34,14 @@ RSpec.describe User, type: :model do
 			expect(user).to validate_uniqueness_of(:email).case_insensitive()
 		end
 
+		it "is not valid without an email" do
+			user.email = nil
+			expect(user).to_not be_valid(:email)
+		end
+
 		it "is not valid without a password" do
 			user.password = nil
-			expect(subject).to_not be_valid
+			expect(user).to_not be_valid(:email)
 		end
 
 	end
