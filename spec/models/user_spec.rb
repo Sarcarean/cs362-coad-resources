@@ -34,10 +34,11 @@ RSpec.describe User, type: :model do
 			expect(user).to validate_uniqueness_of(:email).case_insensitive()
 		end
 
-		it "validates length of password" do
-			expect(user).to validate_length_of(:password).is_at_least(1).is_at_most(255)
+		it "is not valid without a password" do
+			user.password = nil
+			expect(subject).to_not be_valid
 		end
-		
+
 	end
 	
 	
