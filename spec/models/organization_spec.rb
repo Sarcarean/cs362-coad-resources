@@ -38,4 +38,20 @@ RSpec.describe Organization, type: :model do
 		end				
 	end
 
+	describe 'validation' do
+		it "has a minimum email length" do
+			expect(organization).to validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)	
+		end
+	
+	
+	end
+	
+  #validates_length_of :email, minimum: 1, maximum: 255, on: :create
+  #validates :email, format: { with: VALID_EMAIL_REGEX }
+  #validates_uniqueness_of :email, case_sensitive: false
+  #validates_length_of :name, minimum: 1, maximum: 255, on: :create
+  #validates_uniqueness_of :name, case_sensitive: false
+  #validates_length_of :description, maximum: 1020, on: :create
+
+
 end
