@@ -4,7 +4,7 @@ RSpec.describe Organization, type: :model do
 
 	let(:organization) { Organization.new() }
 	
-	describe 'relationship' do
+	describe 'attribute' do
 		it "has an email" do
 			expect(organization).to respond_to(:email)
 		end
@@ -23,6 +23,19 @@ RSpec.describe Organization, type: :model do
 		it "has a secondary phone" do
 			expect(organization).to respond_to(:secondary_phone)
 		end
+	end
+	
+
+	describe 'relationship' do	
+		it "has many users" do
+			expect(organization).to have_many(:users)
+		end
+		it "has many tickets" do
+			expect(organization).to have_many(:tickets)
+		end		
+		it "has many and belongs" do
+			expect(organization).to have_and_belong_to_many(:resource_categories)
+		end				
 	end
 
 end
