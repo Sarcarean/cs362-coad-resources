@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-	#let(:organization) { Organization.new(name: = FAKE, ) }
+	let(:organization) { Organization.new() }
 	
 	describe 'relationship' do
 		it "has an email" do
