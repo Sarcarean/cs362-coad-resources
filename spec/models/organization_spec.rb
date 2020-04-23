@@ -23,9 +23,15 @@ RSpec.describe Organization, type: :model do
 		it "has a secondary phone" do
 			expect(organization).to respond_to(:secondary_phone)
 		end
+		
+		it "has a an agreement_one" do
+			expect(organization).to respond_to(:agreement_one)
+		end		
+		
+		#We need more of these (but don't replicate above statement)
+			
 	end
 	
-
 	describe 'relationship' do	
 		it "has many users" do
 			expect(organization).to have_many(:users)
@@ -39,14 +45,12 @@ RSpec.describe Organization, type: :model do
 	end
 
 	describe 'validation' do
-		it "has a minimum email length" do
-			expect(organization).to validate_length_of(:email).is_at_least(1).is_at_most(255).on(:create)	
+		it "has an email" do
+			expect(organization).to validate_presence_of(:email)
 		end
 	
-	
 		#MORE TESTS HERE
-		
-		
+			
 	end
 	
 	  #validates :email, format: { with: VALID_EMAIL_REGEX }
