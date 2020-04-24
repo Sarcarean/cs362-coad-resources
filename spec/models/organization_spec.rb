@@ -65,6 +65,5 @@ RSpec.describe Organization, type: :model do
 	end
 	
 	  #validates :email, format: { with: VALID_EMAIL_REGEX }
-	  #validates_length_of :description, maximum: 1020, on: :create
 
 end
