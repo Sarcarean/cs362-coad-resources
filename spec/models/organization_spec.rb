@@ -48,15 +48,23 @@ RSpec.describe Organization, type: :model do
 		it "has an email" do
 			expect(organization).to validate_presence_of(:email)
 		end
-	
+		it "has a unique email" do
+			expect(organization).to validate_uniqueness_of(:email).case_insensitive()
+		end
+		it "validates length of name" do 
+			expect(organization).to validate_length_of(:name).is_at_least(1).is_at_most(255).on(:create)
+		end
+		it "has a unique name" do
+			expect(organization).to validate_uniqueness_of(:name).case_insensitive()
+		end
+		it "validates length of description" do
+			expect(organization).to validate_length_of(:description).is_at_most(1020).on(:create)
+		end
 		#MORE TESTS HERE
 			
 	end
 	
 	  #validates :email, format: { with: VALID_EMAIL_REGEX }
-	  #validates_uniqueness_of :email, case_sensitive: false
-	  #validates_length_of :name, minimum: 1, maximum: 255, on: :create
-	  #validates_uniqueness_of :name, case_sensitive: false
 	  #validates_length_of :description, maximum: 1020, on: :create
 
 end
