@@ -28,6 +28,22 @@ RSpec.describe ResourceCategory, type: :model do
 			end
 		end
 
+		## TODO TEST SCOPES
+
+		describe "::unspecified" do 
+			it "creates a new Unspecified region when one does not exist" do
+				expect(ResourceCategory.where(name: 'Unspecified')).to be_empty
+				expect{ ResourceCategory.unspecified }.to change { ResourceCategory.count }.by(1)
+			end
+			it "does not create a new Unspecified region when one already exists" do
+				ResourceCategory.create(name: 'Unspecified')
+				expect{ ResourceCategory.unspecified }.to_not change { ResourceCategory.count}
+			end
+			it "returns a region with the name 'Unspecified'" do	
+				expect(ResourceCategory.unspecified.name).to eq('Unspecified')
+			end
+		end
+
 		describe "#to_s" do
 			it "has a string representation that is the name" do
 				expect(resource_categories.to_s).to eq('FAKE')

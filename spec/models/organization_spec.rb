@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-	let(:organization) { Organization.new() }
+	let(:organization) { Organization.new(name: 'FAKE') }
 	
 	describe 'attribute' do
 		it "has an email" do
@@ -66,4 +66,9 @@ RSpec.describe Organization, type: :model do
 	
 	  #validates :email, format: { with: VALID_EMAIL_REGEX }
 
+	describe "#to_s" do
+	  it "has a string representation that is the name" do
+		  expect(organization.to_s).to eq('FAKE')
+	  end
+  end 
 end
