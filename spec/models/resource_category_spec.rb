@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
 
-    let(:resource_categories) { ResourceCategory.new() }
+    let(:resource_categories) { ResourceCategory.new(name: 'FAKE') }
 
     describe "attributes" do
 			it "has a name " do 
@@ -25,6 +25,12 @@ RSpec.describe ResourceCategory, type: :model do
 			end
 			it "has a unique name" do
 				expect(resource_categories).to validate_uniqueness_of(:name).case_insensitive()
+			end
+		end
+
+		describe "#to_s" do
+			it "has a string representation that is the name" do
+				expect(resource_categories.to_s).to eq('FAKE')
 			end
 		end
 end
