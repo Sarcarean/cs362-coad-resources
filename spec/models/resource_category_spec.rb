@@ -49,4 +49,27 @@ RSpec.describe ResourceCategory, type: :model do
 				expect(resource_categories.to_s).to eq('FAKE')
 			end
 		end
+
+		describe "active scope" do
+			it "has an active scope" do
+			active_resource = ResourceCategory.create(name: 'FAKE', active: true)
+			inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
+
+
+			expect(active_resource.inactive?).to be false
+			expect(inactive_resource.inactive?).to be true
+			end
+		end
+
+		describe "activate" do
+			it "is active" do
+				active_resource = ResourceCategory.create(name: 'FAKE', active: true)
+				inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
+				active_resource.deactivate
+				inactive_resource.activate
+				expect(active_resource.inactive?).to be true
+				expect(inactive_resource.inactive?).to be false
+			end
+		end
+
 end
