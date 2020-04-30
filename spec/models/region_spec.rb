@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Region, type: :model do
-	
-	let(:region) { Region.new(name: 'FAKE') }
-	
+	let(:region) { build(:region) }
+
 	it "has many tickets" do
 		expect(region).to have_many(:tickets)
 	end
@@ -34,8 +33,14 @@ RSpec.describe Region, type: :model do
 
 	describe "#to_s" do
 		it "has a string representation that is the name" do
-			expect(region.to_s).to eq('FAKE')
+			expect(region.to_s).to eq('Fake')
 		end
+	end
+	
+	describe "association example" do
+	  before do
+	   region.tickets << build_stubbed(:ticket)
+	  end
 	end
 
 	describe "::unspecified" do 
@@ -44,8 +49,8 @@ RSpec.describe Region, type: :model do
 			expect{ Region.unspecified }.to change { Region.count }.by(1)
 		end
 		it "does not create a new Unspecified region when one already exists" do
-			Region.create(name: 'Unspecified')
-			expect{ Region.unspecified }.to_not change { Region.count}
+		    create(:region, :unspecified_region)
+			expect{ Region.unspecified }.to_not change { Region.count}				
 		end
 		it "returns a region with the name 'Unspecified'" do	
 			expect(Region.unspecified.name).to eq('Unspecified')
