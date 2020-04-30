@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Region, type: :model do
 	
-	let(:region) { Region.new(name: 'FAKE') }
+	let(:region) { FactoryBot.build(:region) }
 	
 	it "has many tickets" do
 		expect(region).to have_many(:tickets)
@@ -44,7 +44,7 @@ RSpec.describe Region, type: :model do
 			expect{ Region.unspecified }.to change { Region.count }.by(1)
 		end
 		it "does not create a new Unspecified region when one already exists" do
-			Region.create(name: 'Unspecified')
+			FactoryBot.create(:region, :unspecified)
 			expect{ Region.unspecified }.to_not change { Region.count}
 		end
 		it "returns a region with the name 'Unspecified'" do	
