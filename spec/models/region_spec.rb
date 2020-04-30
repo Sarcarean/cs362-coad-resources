@@ -33,7 +33,7 @@ RSpec.describe Region, type: :model do
 
 	describe "#to_s" do
 		it "has a string representation that is the name" do
-			expect(region.to_s).to eq('Fake')
+			expect(region.to_s).to start_with('fake')
 		end
 	end
 	
