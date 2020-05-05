@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
+	let(:ticket) { Ticket.new }
+	let(:organization) { build(:organization) }
+
 	let(:open_ticket) { create(:ticket, :open) }	
 	let(:closed_ticket) { create(:ticket, :closed) }	
 	
@@ -34,6 +37,17 @@ RSpec.describe Ticket, type: :model do
 		  expect(open_tickets).not_to include(closed_ticket)
 	    end
 	  end
+	end
+	
+	describe 'captured' do 
+	  it 'ticket is not captured by default' do
+	    expect(ticket.captured?).to eq(false)
+	  end
+	  
+	  it 'ticket is captured' do
+	    ticket.organization = organization
+		expect(ticket.captured?).to eq(true)
+	  end  
 	end
 	
 
