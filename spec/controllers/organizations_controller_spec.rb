@@ -25,7 +25,7 @@ RSpec.describe OrganizationsController, type: :controller do
 	# end
 
 	# describe 'PATCH /organization/#update' do	 
-	  # specify { expect(patch(:index)).to redirect_to(new_user_session_path) }
+	# 	specify { expect(patch(:update)).to redirect_to(new_user_session_path) }
 	# end
 
 	# describe 'DELETE /organization/#delete' do	 
