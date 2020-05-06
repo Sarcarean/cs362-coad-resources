@@ -5,9 +5,13 @@ RSpec.describe RegionsController, type: :controller do
   context 'As a public user' do
     # Check to make sure users cannot do anything
     #Redirect to sign in page
-	describe '/regions' do
+	describe 'GET #index' do
 	  specify { expect(get(:index)).to redirect_to(new_user_session_path) }
 	end
+
+	# describe 'GET #show' do
+	# 	specify { expect(get(:show)).to redirect_to(new_user_session_path) }
+	# end
   end
   
   context 'As an organization user' do
