@@ -16,9 +16,9 @@ RSpec.describe OrganizationsController, type: :controller do
 	  specify { expect(get(:new)).to redirect_to(new_user_session_path) }
 	end
 	
-	#describe 'GET /organization/#show' do	 
-	#  specify { expect(get(:index)).to redirect_to(new_user_session_path) }
-	#end
+	describe 'GET /organization/#show' do	 
+	  specify { expect(get(:show)).to redirect_to(new_user_session_path) }
+	end
 
 	# describe 'GET /organization/#edit' do	 
 	  # specify { expect(get(:index)).to redirect_to(new_user_session_path) }
