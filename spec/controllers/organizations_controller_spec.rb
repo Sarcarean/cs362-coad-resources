@@ -20,9 +20,9 @@ RSpec.describe OrganizationsController, type: :controller do
 	  specify { expect(get(:show, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 	end
 
-	# describe 'GET /organization/#edit' do	 
-	# 	specify { expect(get(:edit)).to redirect_to(new_user_session_path) }
-	# end
+	 describe 'GET /organization/#edit' do	 
+		specify { expect(get(:edit, params: { id: 'FAKE' })).to redirect_to(new_user_session_path) }
+	end
 
 	# describe 'PATCH /organization/#update' do	 
 	# 	specify { expect(patch(:update)).to redirect_to(new_user_session_path) }
