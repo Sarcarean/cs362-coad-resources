@@ -50,7 +50,19 @@ RSpec.describe RegionsController, type: :controller do
 	describe 'POST #create' do
 		specify { expect(post(:create)).to redirect_to(dashboard_path) }
 	end
+
+	describe 'GET #edit' do
+		specify { expect(get(:edit, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+	end
 		
+	describe 'PATCH #update' do
+		specify { expect(patch(:update, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+	end
+
+	describe 'DELETE #destroy' do
+		specify { expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+	end
+
   end
   
   context 'As an admin' do
