@@ -39,7 +39,9 @@ RSpec.describe OrganizationsController, type: :controller do
 	# describe 'DELETE /organization/#delete' do	 
 	# 	specify { expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 	# end
-			
+
+	#change
+
   end
   
   context 'As an organization user' do
@@ -75,6 +77,9 @@ RSpec.describe OrganizationsController, type: :controller do
 	describe 'GET #index' do
 	  specify { expect(get(:index)).to be_successful }
 	end
+
+
+
 
 	# describe 'GET #new' do
 	# 	specify { expect(get(:new)).to be_successful }
