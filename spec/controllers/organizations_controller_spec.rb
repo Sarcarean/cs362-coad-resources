@@ -28,8 +28,16 @@ RSpec.describe OrganizationsController, type: :controller do
 		specify { expect(patch(:update, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 	end
 
+	describe 'POST #approve' do
+		specify { expect(post(:approve, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
+	end
+
+	describe 'POST #reject' do
+		specify { expect(post(:reject, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
+	end
+
 	# describe 'DELETE /organization/#delete' do	 
-	  # specify { expect(delete(:index)).to redirect_to(new_user_session_path) }
+	# 	specify { expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 	# end
 			
   end
@@ -51,7 +59,7 @@ RSpec.describe OrganizationsController, type: :controller do
 	end
 
 	# describe 'GET #edit' do
-	# 	specify { expect(get(:edit)).to be_successful }
+	#	specify { expect(get(:edit, params: { id: 'FAKE' } )).to be_successful }
 	# end
 
 	# describe 'PUT #update' do	
@@ -68,9 +76,9 @@ RSpec.describe OrganizationsController, type: :controller do
 	  specify { expect(get(:index)).to be_successful }
 	end
 
-	# describe 'GET #new' do
-	#	specify { expect(get(:new)).to be_successful }
-	# end
+	describe 'GET #new' do
+		specify { expect(get(:new)).to be_successful }
+	end
 
 	# describe 'POST #create' do
 	#  	specify { expect(post(:create, params: { organization: attributes_for(:organization) } )).to be_successful }
