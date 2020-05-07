@@ -76,9 +76,9 @@ RSpec.describe OrganizationsController, type: :controller do
 	  specify { expect(get(:index)).to be_successful }
 	end
 
-	describe 'GET #new' do
-		specify { expect(get(:new)).to be_successful }
-	end
+	# describe 'GET #new' do
+	# 	specify { expect(get(:new)).to be_successful }
+	# end
 
 	# describe 'POST #create' do
 	#  	specify { expect(post(:create, params: { organization: attributes_for(:organization) } )).to be_successful }
