@@ -8,12 +8,10 @@ RSpec.describe User, type: :model do
 		it "has an email" do
 			expect(user).to respond_to(:email)
 		end
-			
-		# MORE TESTS HERE
-		
-		#email
-		#role
-		
+	end
+
+	describe "enumerations" do
+		it { should define_enum_for(:role).with([:admin, :organization]) }
 	end
 	
 	describe "relationship" do
