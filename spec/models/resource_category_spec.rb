@@ -28,7 +28,28 @@ RSpec.describe ResourceCategory, type: :model do
 			end
 		end
 
-		## TODO TEST SCOPES
+		describe "scopes" do
+			describe ".active" do
+				it "includes active resource categories" do
+					active_resource = ResourceCategory.create(name: 'FAKE', active: true)
+					expect(ResourceCategory.active).to include(active_resource)
+				end
+				it "excludes inactive resource categories" do
+					inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
+					expect(ResourceCategory.active).not_to include(inactive_resource)
+				end	
+			end
+			describe ".inactive" do 
+				it "includes inactive resource categories" do
+					inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
+					expect(ResourceCategory.inactive).to include(inactive_resource)
+				end	
+				it "excludes active resource categories" do
+					active_resource = ResourceCategory.create(name: 'FAKE', active: true)
+					expect(ResourceCategory.inactive).not_to include(active_resource)
+				end
+			end
+		end
 
 		describe "::unspecified" do 
 			it "creates a new Unspecified region when one does not exist" do
