@@ -21,12 +21,12 @@ RSpec.describe OrganizationsController, type: :controller do
 	end
 
 	 describe 'GET /organization/#edit' do	 
-		specify { expect(get(:edit, params: { id: 'FAKE' })).to redirect_to(new_user_session_path) }
+		specify { expect(get(:edit, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 	end
 
-	# describe 'PATCH /organization/#update' do	 
-	# 	specify { expect(patch(:update)).to redirect_to(new_user_session_path) }
-	# end
+	describe 'PATCH /organization/#update' do	 
+		specify { expect(patch(:update, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
+	end
 
 	# describe 'DELETE /organization/#delete' do	 
 	  # specify { expect(delete(:index)).to redirect_to(new_user_session_path) }
