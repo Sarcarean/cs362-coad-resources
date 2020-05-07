@@ -31,6 +31,11 @@ RSpec.describe Organization, type: :model do
 		#We need more of these (but don't replicate above statement)
 			
 	end
+
+	describe 'enumerations' do
+		it { should define_enum_for(:status).with([:approved, :submitted, :rejected, :locked]) }
+		it { should define_enum_for(:transportation).with([:yes, :no, :maybe]) }
+	end
 	
 	describe 'relationship' do	
 		it "has many users" do
