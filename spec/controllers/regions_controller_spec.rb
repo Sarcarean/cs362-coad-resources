@@ -78,7 +78,11 @@ RSpec.describe RegionsController, type: :controller do
 	end
 
 	# describe 'POST #create' do
-	#	specify { expect(post(:create, params: { region: attributes_for(:region) })).to be_successful }
+	# 	specify { expect(post(:create, params: { region: attributes_for(:region) } )).to be_successful }
+	# end
+
+	# describe 'GET #edit' do
+	# 	specify { expect(get(:edit)).to be_successful }
 	# end
 	
   end
