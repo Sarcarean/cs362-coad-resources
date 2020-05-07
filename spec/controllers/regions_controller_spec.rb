@@ -34,6 +34,14 @@ RSpec.describe RegionsController, type: :controller do
 	describe 'GET #index' do
 	  specify { expect(get(:index)).to redirect_to(dashboard_path) }
 	end
+
+	describe 'GET #new' do	 
+		specify { expect(get(:new)).to redirect_to(dashboard_path) }
+	end
+
+	describe 'POST #create' do
+		specify { expect(post(:create)).to redirect_to(dashboard_path) }
+	end
 		
   end
   
@@ -44,6 +52,14 @@ RSpec.describe RegionsController, type: :controller do
 	describe 'GET #index' do
 	  specify { expect(get(:index)).to be_successful }
 	end
+
+	describe 'GET #new' do	 
+		specify { expect(get(:new)).to be_successful }
+	end
+
+	# describe 'POST #create' do
+	#	specify { expect(post(:create, params: { region: attributes_for(:region) })).to be_successful }
+	# end
 	
   end
   
