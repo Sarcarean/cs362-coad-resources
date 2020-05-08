@@ -2,11 +2,12 @@ FactoryBot.define do
   factory :organization do
     email
 	name { 'FAKE' }
-	phone { '555-555-5555' }
+	phone { '+41 44 111 22 22' }
 	description { 'a test organization' }
 	liability_insurance { true }
 	primary_name { 'primary name' }
 	secondary_name { 'secondary name' }
+	secondary_phone { '+41 44 111 22 33'}
 	title { 'title' }
 	transportation { :yes }
 	

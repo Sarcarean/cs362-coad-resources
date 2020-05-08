@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-	let(:organization) { FactoryBot.build(:organization) }
+	let(:organization) { FactoryBot.build(:organization, :approved) }
 	
 	describe 'attribute' do
 		it "has an email" do
@@ -69,11 +69,18 @@ RSpec.describe Organization, type: :model do
 			
 	end
 	
-	  #validates :email, format: { with: VALID_EMAIL_REGEX }
+	 #validates :email, format: { with: VALID_EMAIL_REGEX }
+
+    describe 'other' do
+		it 'is persisted' do
+			expect(organization).to be_persisted
+		end	
+	end
 
 	describe "#to_s" do
 	  it "has a string representation that is the name" do
 		  expect(organization.to_s).to eq('FAKE')
 	  end
   end 
+  
 end
