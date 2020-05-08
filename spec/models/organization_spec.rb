@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
 
-	let(:organization) { FactoryBot.build(:organization, :approved) }
+	let(:organization) { FactoryBot.create(:organization, :approved) }
 	
 	describe 'attribute' do
 		it "has an email" do
