@@ -82,6 +82,6 @@ RSpec.describe Organization, type: :model do
 		expected_result = organization.name
 		expect(organization.to_s).to eq(expected_result)
 	  end
-  end 
+  	end 
   
 end

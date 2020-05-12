@@ -97,6 +97,13 @@ RSpec.describe Ticket, type: :model do
 		expect(ticket.captured?).to eq(true)
 	  end  
 	end
+
+	describe "#to_s" do
+	  it "has a string representation that is the ticket id" do
+		expected_result = ticket.name
+		expect(ticket.to_s).to eq("Ticket #{expected_result}")
+	  end
+  	end 
 	
 
 end
