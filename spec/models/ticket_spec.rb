@@ -78,6 +78,15 @@ RSpec.describe Ticket, type: :model do
 	
 	end
 	
+	describe 'open?' do
+		let(:open_ticket) { create(:ticket, :open) }	
+		let(:closed_ticket) { create(:ticket, :closed) }
+		it 'returns true if the ticket is open' do
+			expect(open_ticket.open?).to eq(true)
+			expect(closed_ticket.open?).to eq(false)
+		end
+	end
+
 	describe 'captured' do 
 	  it 'ticket is not captured by default' do
 	    expect(ticket.captured?).to eq(false)
