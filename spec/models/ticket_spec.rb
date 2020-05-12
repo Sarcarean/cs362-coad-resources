@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
 	let(:ticket) { Ticket.new }
-	let(:organization) { build(:organization) }
-
-	let(:open_ticket) { create(:ticket, :open) }	
-	let(:closed_ticket) { create(:ticket, :closed) }	
+	let(:organization) { build(:organization) }	
 	
 	describe 'properties' do
 	  it { is_expected.to respond_to(:name) }
@@ -32,13 +29,35 @@ RSpec.describe Ticket, type: :model do
 	end
 	
 	describe 'scopes' do
-	  describe 'open and closed' do
-	    it 'includes open tickets but not closed tickets' do     
+		let(:open_ticket) { create(:ticket, :open) }	
+		let(:closed_ticket) { create(:ticket, :closed) }
+		let(:open_ticket_with_org) { create(:ticket, :open, :with_org) }
+		let(:closed_ticket_with_org) { create(:ticket, :closed, :with_org) }
+
+	    it 'returns open tickets but not closed tickets' do     
 		  open_tickets = Ticket.open	  
 		  expect(open_tickets).to include(open_ticket)
 		  expect(open_tickets).not_to include(closed_ticket)
-	    end
-	  end
+		end
+		
+		it 'returns closed tickets but not open tickets' do
+			closed_tickets = Ticket.closed
+			expect(closed_tickets).to include(closed_ticket)
+			expect(closed_tickets).not_to include(open_ticket)
+		end
+
+		it 'returns open tickets that have an organization' do
+			tickets = Ticket.all_organization
+			expect(tickets).to include(open_ticket_with_org)
+			expect(tickets).not_to include(closed_ticket)
+		end
+
+		it 'returns open tickets with that organization id' do
+			ticket = Ticket.organization(open_ticket_with_org)
+			expect(ticket).to include(open_ticket_with_org)
+			expect(ticket).not_to include(closed_ticket_with_org)
+		end
+	
 	end
 	
 	describe 'captured' do 
