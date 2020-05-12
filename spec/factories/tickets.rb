@@ -15,8 +15,8 @@ FactoryBot.define do
 	trait :with_org do
 		organization
 	end
-	region_id { create(:region).id }
-	resource_category_id { create(:resource_category).id }
+	region
+	resource_category
   end
 
 
