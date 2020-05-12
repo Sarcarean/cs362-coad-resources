@@ -46,23 +46,24 @@ RSpec.describe OrganizationsController, type: :controller do
 	  specify { expect(get(:index)).to be_successful }
 	end
 	
+	
 	describe 'POST /organizations' do	 
 	
-	  it 'succedes' do
+		#it 'succedes' do
 	    #expect_any_instance_of(UserMailer).to receive(:new_organization_application).and_return(nil)
 	    #create(:user, :admin)				#added
-        #expect(post(:create, params: { organization: attributes_for(:organization) } )).to be_successful
-      end
+        #xpect(post(:create, params: { organization: attributes_for(:organization) } )).to be_successful
+	  	#end
 	end
 	
 	describe 'GET /organizations/new' do	 
 	  specify { expect(get(:new)).to be_successful }
 	end
 	
-	describe 'GET /organization/#show' do 
+	# describe 'GET /organization/#show' do 
 	  #org = FactoryBot.create(:organization)
 	  #specify { expect(get(:show, params: { id: org.id } )).to be_successful }
-	end
+	# end
 
 	 # describe 'GET /organization/#edit' do	 
 		# specify { expect(get(:edit, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
