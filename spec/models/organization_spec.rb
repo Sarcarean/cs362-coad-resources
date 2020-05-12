@@ -78,8 +78,7 @@ RSpec.describe Organization, type: :model do
 		it "status remains approved if already approved" do
 			expect(organization.approve).to eq(:approved) 
 		end
-	
-		it "status changes to approves if status wasn't approved already" do
+		it "status changes to approves if the status wasn't approved already" do
 			expect(locked_organization.approve).to eq(:approved)
 			expect(rejected_organization.approve).to eq(:approved)
 			expect(submitted_organization.approve).to eq(:approved)
@@ -89,6 +88,11 @@ RSpec.describe Organization, type: :model do
 	describe "reject" do
 		it "status remains rejected if the status is already rejected" do
 			expect(rejected_organization.reject).to eq(:rejected)
+		end
+		it "status changes to rejected if the status wasn't already rejected" do
+			expect(organization.reject).to eq(:rejected)
+			expect(locked_organization.reject).to eq(:rejected)
+			expect(submitted_organization.reject).to eq(:rejected)
 		end
 	end
 
