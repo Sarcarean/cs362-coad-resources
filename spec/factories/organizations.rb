@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :organization do
     email
-	name { 'FAKE' }
+	name
 	phone { '+41 44 111 22 22' }
 	description { 'a test organization' }
 	liability_insurance { true }
