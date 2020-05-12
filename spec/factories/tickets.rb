@@ -2,7 +2,8 @@ FactoryBot.define do
 
   factory :ticket do
     name
-	description { 'a test ticket' }		
+	description { 'a test ticket' }	
+	phone { '+41 44 111 22 33' }	
 	trait :open do
 	  closed { false }
 	  name { 'open_ticket' }
@@ -11,13 +12,11 @@ FactoryBot.define do
 	  closed { true }
 	  name { 'closed_ticket' }
 	end
-	phone { '+41 44 111 22 33' }
 	trait :with_org do
 		organization
 	end
 	region
 	resource_category
   end
-
 
 end

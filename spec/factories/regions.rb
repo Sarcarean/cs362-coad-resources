@@ -3,22 +3,9 @@ FactoryBot.define do
   factory :region do
     name
 	
-	trait :unspecified_region do
-	  name { 'Unspecified' }
-	end
-  end
-  
-  # FactoryBot.define do
-    # factory :ticket do
-	  # name { 'Fake' }
-	  # organization
-    # end
-  # end
- 
-  # FactoryBot.define do
-    # factory :organization do
-	  # name { 'Fake' }
-    # end
-  # end  
+	  trait :unspecified_region do
+	    name { 'Unspecified' }
+  	end
+  end 
  
 end
