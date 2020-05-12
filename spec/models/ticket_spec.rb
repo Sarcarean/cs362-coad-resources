@@ -69,6 +69,12 @@ RSpec.describe Ticket, type: :model do
 			expect(ticket).to include(open_ticket)
 			expect(ticket).not_to include(closed_ticket)
 		end
+
+		it 'returns tickets with that resource category id' do
+			ticket = Ticket.resource_category(open_ticket)
+			expect(ticket).to include(open_ticket)
+			expect(ticket).not_to include(closed_ticket)
+		end
 	
 	end
 	
