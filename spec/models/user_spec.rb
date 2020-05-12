@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 	
-	let(:user) {User.new(email: 'FAKE')}
+	let(:user) { build(:user) }
 	
 	describe "attributes" do
 		it "has an email" do
@@ -46,7 +46,8 @@ RSpec.describe User, type: :model do
 	
 	describe "#to_s" do
 		it "has a string representation that is the email" do
-			expect(user.to_s).to eq('FAKE')
+			expected_result = user.email
+			expect(user.to_s).to eq(expected_result)
 		end
 	end
 
