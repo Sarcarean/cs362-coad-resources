@@ -72,11 +72,19 @@ RSpec.describe Organization, type: :model do
 	 #validates :email, format: { with: VALID_EMAIL_REGEX }
 
 	describe "approve" do
+		let(:locked_organization) { build(:organization, :locked) }
+		let(:rejected_organization) { build(:organization, :rejected) }
+		let(:submitted_organization) { build(:organization, :submitted) }
 		it "status remains approved if already approved" do
 			expect(organization.approve).to eq(:approved) 
 		end
-	end
 	
+		it "status changes to approves if status wasn't approved already" do
+			expect(locked_organization.approve).to eq(:approved)
+			expect(rejected_organization.approve).to eq(:approved)
+			expect(submitted_organization.approve).to eq(:approved)
+		end
+	end
 
 	describe "#to_s" do
 		it "has a string representation that is the name" do
