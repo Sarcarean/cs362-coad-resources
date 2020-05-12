@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe Organization, type: :model do
 
 	let(:organization) { FactoryBot.build(:organization, :approved) }
+	let(:locked_organization) { build(:organization, :locked) }
+	let(:rejected_organization) { build(:organization, :rejected) }
+	let(:submitted_organization) { build(:organization, :submitted) }
 	
 	describe 'attribute' do
 		it "has an email" do
@@ -72,9 +75,6 @@ RSpec.describe Organization, type: :model do
 	 #validates :email, format: { with: VALID_EMAIL_REGEX }
 
 	describe "approve" do
-		let(:locked_organization) { build(:organization, :locked) }
-		let(:rejected_organization) { build(:organization, :rejected) }
-		let(:submitted_organization) { build(:organization, :submitted) }
 		it "status remains approved if already approved" do
 			expect(organization.approve).to eq(:approved) 
 		end
@@ -83,6 +83,12 @@ RSpec.describe Organization, type: :model do
 			expect(locked_organization.approve).to eq(:approved)
 			expect(rejected_organization.approve).to eq(:approved)
 			expect(submitted_organization.approve).to eq(:approved)
+		end
+	end
+
+	describe "reject" do
+		it "status remains rejected if the status is already rejected" do
+			expect(rejected_organization.reject).to eq(:rejected)
 		end
 	end
 
