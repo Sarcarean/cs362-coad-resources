@@ -71,17 +71,24 @@ RSpec.describe Organization, type: :model do
 	
 	 #validates :email, format: { with: VALID_EMAIL_REGEX }
 
+	describe "approve" do
+		it "status remains approved if already approved" do
+			expect(organization.approve).to eq(:approved) 
+		end
+	end
+	
+
+	describe "#to_s" do
+		it "has a string representation that is the name" do
+	   		expected_result = organization.name
+	    	expect(organization.to_s).to eq(expected_result)
+		end
+	end
+
     describe 'other' do
 		#it 'is persisted' do
 		#	expect(organization).to be_persisted
 		#end	
-	end
-
-	describe "#to_s" do
-	  it "has a string representation that is the name" do
-		expected_result = organization.name
-		expect(organization.to_s).to eq(expected_result)
-	  end
-  	end 
+	end 
   
 end
