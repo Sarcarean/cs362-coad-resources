@@ -7,7 +7,7 @@ FactoryBot.define do
 	liability_insurance { true }
 	primary_name { 'primary name' }
 	secondary_name { 'secondary name' }
-	secondary_phone { '+41 44 111 22 33'}
+	#secondary_phone { '+41 44 111 22 33'}
 	title { 'title' }
 	transportation { :yes }
 	

@@ -32,13 +32,21 @@ RSpec.describe Ticket, type: :model do
 	end
 	
 	describe 'scopes' do
-	  describe 'open and closed' do
-	    it 'includes open tickets but not closed tickets' do     
-		  open_tickets = Ticket.open	  
+
+	  describe 'open' do
+
+		it "returns open tickets" do
+	      open_tickets = Ticket.open
 		  expect(open_tickets).to include(open_ticket)
-		  expect(open_tickets).not_to include(closed_ticket)
 	    end
+	
+	    it "does not return closed tickets" do
+	      open_tickets = Ticket.open
+		  expect(open_tickets).to_not include(closed_ticket)
+	    end
+	  
 	  end
+	
 	end
 	
 	describe 'captured' do 
