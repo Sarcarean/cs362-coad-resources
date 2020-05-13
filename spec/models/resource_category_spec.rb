@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
 
-    let(:resource_categories) { ResourceCategory.new(name: 'FAKE') }
+    let(:resource_categories) { build(:resource_category) }
 
     describe "attributes" do
 			it "has a name " do 
@@ -67,7 +67,8 @@ RSpec.describe ResourceCategory, type: :model do
 
 		describe "#to_s" do
 			it "has a string representation that is the name" do
-				expect(resource_categories.to_s).to eq('FAKE')
+				expected_result = resource_categories.name
+				expect(resource_categories.to_s).to eq(expected_result)
 			end
 		end
 
