@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ResourceCategory, type: :model do
 
-    let(:resource_categories) { build(:resource_category) }
-
+	let(:resource_categories) { create(:resource_category) }
+	let(:active_resource_categories) { create(:resource_category, active: true) }
+	let(:inactive_resource_categories) { create(:resource_category, active: false) }
+	
     describe "attributes" do
 			it "has a name " do 
 				expect(resource_categories).to respond_to(:name)
@@ -31,8 +33,10 @@ RSpec.describe ResourceCategory, type: :model do
 		describe "scopes" do
 			describe ".active" do
 				it "includes active resource categories" do
-					active_resource = ResourceCategory.create(name: 'FAKE', active: true)
-					expect(ResourceCategory.active).to include(active_resource)
+					active_resources = ResourceCategory.active
+					expect(active_resources).to include(active_resource_categories)
+					#active_resource = ResourceCategory.create(name: 'FAKE', active: true)
+					#expect(ResourceCategory.active).to include(active_resource)
 				end
 				it "excludes inactive resource categories" do
 					inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
