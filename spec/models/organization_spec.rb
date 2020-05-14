@@ -90,8 +90,6 @@ RSpec.describe Organization, type: :model do
 		end
 		
 		it "validates email format" do	  
-		  #expect(organization).to match(:email)
-		  #VALID_EMAIL_REGEX
 		  #expect(organization).to allow_value(:email)
 		  #it { should allow_value('http://foo.com').for(:website_url) }
 		end
