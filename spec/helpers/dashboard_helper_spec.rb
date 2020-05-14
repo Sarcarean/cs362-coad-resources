@@ -18,13 +18,19 @@ RSpec.describe DashboardHelper, type: :helper do
     end
     
     it "returs organization_approved_dashboard" do
-	  org = Organization.new(status: "approved")
-	  user = User.new(role: "organization", organization: org)
-	  expect(helper.dashboard_for(user)).to eq('organization_approved_dashboard')
+      user = double() #Create test double
+      user.stub(:admin?) { false }	 
+      user.stub_chain(:organization, :submitted?).and_return(false)
+	  user.stub_chain(:organization, :approved?).and_return(true)	  
+      expect(helper.dashboard_for(user)).to eq('organization_approved_dashboard')			  
 	end
 	
 	it "returns unknown users to dashboard" do
-	  expect(helper.dashboard_for(User.new)).to eq('create_application_dashboard')
+      user = double() #Create test double
+      user.stub(:admin?) { false }	 
+      user.stub_chain(:organization, :submitted?).and_return(false)
+	  user.stub_chain(:organization, :approved?).and_return(false)		   
+	  expect(helper.dashboard_for(user)).to eq('create_application_dashboard')  
 	end
     
   end  
