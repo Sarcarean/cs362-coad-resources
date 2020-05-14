@@ -17,7 +17,7 @@ RSpec.describe DashboardHelper, type: :helper do
 	  expect(helper.dashboard_for(user)).to eq('organization_submitted_dashboard')		  
     end
     
-    it "returs org to approved_dashboard" do
+    it "returs organization_approved_dashboard" do
 	  org = Organization.new(status: "approved")
 	  user = User.new(role: "organization", organization: org)
 	  expect(helper.dashboard_for(user)).to eq('organization_approved_dashboard')
