@@ -85,9 +85,9 @@ RSpec.describe RegionsController, type: :controller do
 		specify { expect(post(:create, params: { region: attributes_for(:region) } )).to redirect_to(regions_path) }
 	end
 
-	# describe 'GET #edit' do
-	# 	specify { expect(get(:edit)).to be_successful }
-	# end
+	describe 'GET #edit' do
+		specify { expect(get(:edit)).to be_successful }
+	end
 	
   end
   
