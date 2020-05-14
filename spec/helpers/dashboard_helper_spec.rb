@@ -11,9 +11,10 @@ RSpec.describe DashboardHelper, type: :helper do
     end
 
     it "returns organization_submitted_dashboard" do
-	  org = Organization.new(status: "submitted")
-	  user = User.new(role: "organization", organization: org)	  
-	  expect(helper.dashboard_for(user)).to eq('organization_submitted_dashboard')	  
+      user = double() #Create test double
+      user.stub(:admin?) { false }	  
+      user.stub_chain(:organization, :submitted?).and_return(true)
+	  expect(helper.dashboard_for(user)).to eq('organization_submitted_dashboard')		  
     end
     
     it "returs org to approved_dashboard" do
