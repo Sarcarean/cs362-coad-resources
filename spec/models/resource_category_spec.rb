@@ -37,18 +37,18 @@ RSpec.describe ResourceCategory, type: :model do
 					expect(active_resources).to include(active_resource_categories)
 				end
 				it "excludes inactive resource categories" do
-					inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
-					expect(ResourceCategory.active).not_to include(inactive_resource)
+					active_resources = ResourceCategory.active
+					expect(active_resources).not_to include(inactive_resource_categories)
 				end	
 			end
 			describe ".inactive" do 
 				it "includes inactive resource categories" do
-					inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
-					expect(ResourceCategory.inactive).to include(inactive_resource)
+					inactive_resources = ResourceCategory.inactive
+					expect(inactive_resources).to include(inactive_resource_categories)
 				end	
 				it "excludes active resource categories" do
-					active_resource = ResourceCategory.create(name: 'FAKE', active: true)
-					expect(ResourceCategory.inactive).not_to include(active_resource)
+					inactive_resources = ResourceCategory.inactive
+					expect(inactive_resources).not_to include(active_resource_categories)
 				end
 			end
 		end

@@ -93,15 +93,14 @@ RSpec.describe Organization, type: :model do
 		  #expect(organization).to match(:email)
 		  #VALID_EMAIL_REGEX
 		  #expect(organization).to allow_value(:email)
-          #it { should allow_value('http://foo.com').for(:website_url) }
+		  #it { should allow_value('http://foo.com').for(:website_url) }
 		end
 		
 
         #validates :email, format: { with: VALID_EMAIL_REGEX }
 		
 	end
-	
-	 #validates :email, format: { with: VALID_EMAIL_REGEX }
+
 
 	describe "approve" do
 		it "status remains approved if already approved" do
