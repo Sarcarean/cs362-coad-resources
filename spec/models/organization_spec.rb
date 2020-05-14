@@ -14,6 +14,9 @@ RSpec.describe Organization, type: :model do
 		it "has a name" do
 			expect(organization).to respond_to(:name)
 		end
+		it "has a phone number" do
+			expect(organization).to respond_to(:phone)
+		end
 		it "has a status" do
 			expect(organization).to respond_to(:status)
 		end
@@ -26,13 +29,30 @@ RSpec.describe Organization, type: :model do
 		it "has a secondary phone" do
 			expect(organization).to respond_to(:secondary_phone)
 		end
-		
 		it "has a an agreement_one" do
 			expect(organization).to respond_to(:agreement_one)
+		end			
+		it "has a an agreement_two" do
+			expect(organization).to respond_to(:agreement_two)
+		end
+		it "has a an agreement_three" do
+			expect(organization).to respond_to(:agreement_three)
 		end		
-		
-		#We need more of these (but don't replicate above statement)
-			
+		it "has a an agreement_four" do
+			expect(organization).to respond_to(:agreement_four)
+		end		
+		it "has a an agreement_five" do
+			expect(organization).to respond_to(:agreement_five)
+		end		
+		it "has a an agreement_six" do
+			expect(organization).to respond_to(:agreement_six)
+		end	
+		it "has a an agreement_seven" do
+			expect(organization).to respond_to(:agreement_seven)
+		end				
+		it "has a an agreement_eight" do
+			expect(organization).to respond_to(:agreement_eight)
+		end			
 	end
 
 	describe 'enumerations' do
@@ -68,8 +88,17 @@ RSpec.describe Organization, type: :model do
 		it "validates length of description" do
 			expect(organization).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
-		#MORE TESTS HERE
-			
+		
+		it "validates email format" do	  
+		  #expect(organization).to match(:email)
+		  #VALID_EMAIL_REGEX
+		  #expect(organization).to allow_value(:email)
+          #it { should allow_value('http://foo.com').for(:website_url) }
+		end
+		
+
+        #validates :email, format: { with: VALID_EMAIL_REGEX }
+		
 	end
 	
 	 #validates :email, format: { with: VALID_EMAIL_REGEX }
@@ -103,7 +132,7 @@ RSpec.describe Organization, type: :model do
 		end
 	end
 
-    describe 'other' do
+    describe 'is presisted' do
 		#it 'is persisted' do
 		#	expect(organization).to be_persisted
 		#end	
