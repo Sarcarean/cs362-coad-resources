@@ -76,27 +76,23 @@ RSpec.describe ResourceCategory, type: :model do
 
 		describe "activate" do
 			it "remains active if already active" do
-				active_resource = ResourceCategory.create(name: 'FAKE', active: true)
-				active_resource.activate
-				expect(active_resource.inactive?).to be false
+				active_resource_categories.activate
+				expect(active_resource_categories.inactive?).to be false
 			end
 			it "changes from inactive to active" do
-				inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
-				inactive_resource.activate
-				expect(inactive_resource.inactive?).to be false
+				inactive_resource_categories.activate
+				expect(inactive_resource_categories.inactive?).to be false
 			end
 		end
 
 		describe "deactivate" do
 			it "remains inactive if already inactive" do
-				inactive_resource = ResourceCategory.create(name: 'FAKE', active: false)
-				inactive_resource.deactivate
-				expect(inactive_resource.inactive?).to be true
+				inactive_resource_categories.deactivate
+				expect(inactive_resource_categories.inactive?).to be true
 			end
 			it "changes from active to inactive" do
-				active_resource = ResourceCategory.create(name: 'FAKE', active: true)
-				active_resource.deactivate
-				expect(active_resource.inactive?).to be true
+				active_resource_categories.deactivate
+				expect(active_resource_categories.inactive?).to be true
 			end
 		end
 
