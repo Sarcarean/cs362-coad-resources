@@ -88,15 +88,6 @@ RSpec.describe Organization, type: :model do
 		it "validates length of description" do
 			expect(organization).to validate_length_of(:description).is_at_most(1020).on(:create)
 		end
-		
-		it "validates email format" do	  
-		  #expect(organization).to allow_value(:email)
-		  #it { should allow_value('http://foo.com').for(:website_url) }
-		end
-		
-
-        #validates :email, format: { with: VALID_EMAIL_REGEX }
-		
 	end
 
 

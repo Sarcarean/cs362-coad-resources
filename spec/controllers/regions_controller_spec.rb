@@ -73,20 +73,36 @@ RSpec.describe RegionsController, type: :controller do
 	let(:admin_user) { create(:user, :admin) }	
 	before(:each) { sign_in(admin_user) }
 	
-	describe 'GET #index' do
-	  specify { expect(get(:index)).to be_successful }
+	specify 'GET #index' do
+		expect(get(:index)).to be_successful
 	end
 
-	describe 'GET #new' do	 
-		specify { expect(get(:new)).to be_successful }
+	specify 'GET #show' do	
+		region = create(:region)
+		expect(get(:show, params: {id: region.id})).to be_successful
+	end
+	
+	specify 'GET #new' do	 
+		expect(get(:new)).to be_successful
 	end
 
-	describe 'POST #create' do
-		specify { expect(post(:create, params: { region: attributes_for(:region) } )).to redirect_to(regions_path) }
+	specify 'GET #edit' do
+		region = create(:region)
+		expect(get(:edit, params: {id: region.id})).to be_successful
 	end
 
-	describe 'GET #edit' do
-		specify { expect(get(:edit)).to be_successful }
+	specify 'POST #create' do
+		expect(post(:create, params: { region: attributes_for(:region) } )).to redirect_to(regions_path)
+	end
+
+	specify 'PUT #update' do
+		region = create(:region)
+		expect(put(:update, params: { id: region.id, region: attributes_for(:region) })).to redirect_to(regions_path + "/" + region.id.to_s)
+	end
+
+	specify 'DELETE #destroy' do
+		region = create(:region)
+		expect(delete(:destroy, params: {id: region.id} )).to redirect_to(regions_path)
 	end
 	
   end
