@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Creating a Ticket', type: :feature do
 
-  before do
+  before :each do
     @region = Region.create(name: 'Fake Region')
     @resource_category = ResourceCategory.create(name: 'Fake Category')
   end

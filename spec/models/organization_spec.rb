@@ -119,11 +119,5 @@ RSpec.describe Organization, type: :model do
 	    	expect(organization.to_s).to eq(expected_result)
 		end
 	end
-
-    describe 'is presisted' do
-		#it 'is persisted' do
-		#	expect(organization).to be_persisted
-		#end	
-	end 
   
 end
