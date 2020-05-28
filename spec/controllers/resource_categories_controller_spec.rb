@@ -103,5 +103,10 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 				admin_user.save
 				expect(get(:edit, params: { id: admin_user.id })).to be_successful
 			end
+
+			specify 'PUT #update' do
+				resource_category = create(:resource_category)
+				expect(put(:update, params: { resource_category: attributes_for(:resource_category) })).to redirect_to(resource_categories_path + "/" + resource_category.id.to_s)
+			end
 		end
 end
