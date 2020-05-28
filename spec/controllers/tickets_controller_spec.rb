@@ -13,5 +13,9 @@ RSpec.describe TicketsController, type: :controller do
 				ticket.save
 				expect(post(:create, params: { ticket: attributes_for(:ticket) } )).to be_successful
 			end
+
+			# describe 'GET #show' do
+			#	specify { expect(get(:show, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			# end
     end
 end
