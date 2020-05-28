@@ -15,5 +15,9 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 			describe 'GET #new' do	 
 				specify { expect(get(:new)).to redirect_to(new_user_session_path) }
 			end
+
+			describe 'GET #new' do	 
+				specify { expect(get(:new)).to redirect_to(new_user_session_path) }
+			end
     end
 end
