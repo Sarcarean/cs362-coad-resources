@@ -1,10 +1,12 @@
 - provide(:title, 'Organization Applications')
 
-- if @organization.submitted? || @organization.rejected?
-  %h1.mt-5 Review Application for #{@organization.name}
-- else
-  %h1.mt-5= @organization.name
-
+.row.mt-5
+  .col
+  - if @organization.submitted? || @organization.rejected?
+    %h1.mt-5 Review Application for #{@organization.name}
+  - else
+    %h1.mt-5= @organization.name
+  .col.text-right
 = link_to 'Edit Organization', edit_organization_path(@organization), class: 'btn btn-primary'
 
 - if current_user.admin?
