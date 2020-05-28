@@ -59,5 +59,10 @@ RSpec.describe TicketsController, type: :controller do
 			describe 'POST #release' do
 				specify { expect(post(:release, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
+
+			describe 'PATCH #close' do
+				specify { expect(patch(:close, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			end
+
 		end
 end
