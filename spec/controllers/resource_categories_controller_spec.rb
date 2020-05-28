@@ -48,5 +48,9 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 			describe 'GET #index' do
 	  		specify { expect(get(:index)).to redirect_to(dashboard_path) }
 			end
+
+			describe 'GET #show' do
+				specify { expect(get(:show, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			end
 		end
 end
