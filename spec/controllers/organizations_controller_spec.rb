@@ -122,14 +122,14 @@ RSpec.describe OrganizationsController, type: :controller do
 	  expect(post(:approve, params: { id: user.organization.id } )).to redirect_to("/organizations")	
 	end
 
-    #WORKING ON THIS:
 	specify 'POST #reject' do
 	  user = create(:user, role: 'organization')
 	  user.organization = create(:organization, :submitted)
 	  user.save
-	  #expect(post(:reject, params: { id: user.organization.id } )).to redirect_to("/organizations")			
+	  expect(post(:reject, params: { id: user.organization.id, organization: {rejection_reason: 'FAKE'} } )).to redirect_to("/organizations")			
 	end
-
+	
+	
   end
 
 
