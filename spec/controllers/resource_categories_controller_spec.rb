@@ -93,5 +93,9 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 			specify 'GET #new' do	 
 				expect(get(:new)).to be_successful
 			end
+
+			specify 'POST #create' do
+				expect(post(:create, params: { resource_category: attributes_for(:resource_category) } )).to redirect_to(resource_categories_path)
+			end
 		end
 end
