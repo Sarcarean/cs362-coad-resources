@@ -95,5 +95,10 @@ RSpec.describe TicketsController, type: :controller do
 			describe 'POST #release' do
 				specify { expect(post(:release, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
+
+			specify 'DELETE #destroy' do
+				ticket = create(:ticket) 
+				expect(delete(:destroy, params: { id: ticket.id } )).to redirect_to(dashboard_path + "#tickets")
+			end
 		end
 end
