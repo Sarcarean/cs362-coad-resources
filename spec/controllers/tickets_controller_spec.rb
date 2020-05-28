@@ -68,4 +68,13 @@ RSpec.describe TicketsController, type: :controller do
 				specify { expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
 		end
+
+		context 'As an admin user' do
+			let(:admin_user) { create(:user, :admin) }	
+			before(:each) { sign_in(admin_user) }
+
+			describe 'GET #new' do	 
+				specify { expect(get(:new)).to be_successful }
+			end
+		end
 end
