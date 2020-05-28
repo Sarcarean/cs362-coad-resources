@@ -28,11 +28,11 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 				specify { expect(patch(:update, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 			end
 
-			describe 'PATCH #update' do	 
+			describe 'PATCH #activate' do	 
 				specify { expect(patch(:activate, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 			end
 
-			describe 'PATCH #update' do	 
+			describe 'PATCH #deactivate' do	 
 				specify { expect(patch(:deactivate, params: { id: 'FAKE' } )).to redirect_to(new_user_session_path) }
 			end
 
@@ -67,6 +67,10 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 
 			describe 'PATCH #update' do
 				specify { expect(patch(:update, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			end
+
+			describe 'PATCH #activate' do	 
+				specify { expect(patch(:activate, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
 		end
 end
