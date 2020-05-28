@@ -56,5 +56,9 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 			describe 'GET #new' do	 
 				specify { expect(get(:new)).to redirect_to(dashboard_path) }
 			end
+
+			describe 'POST #create' do
+				specify { expect(post(:create)).to redirect_to(dashboard_path) }
+			end
 		end
 end
