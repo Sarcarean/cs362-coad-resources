@@ -102,7 +102,11 @@ RSpec.describe OrganizationsController, type: :controller do
 	end	
 	
 	specify 'PATCH #update' do	 
-		expect(patch(:update, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+	  admin_user.organization = create(:organization, :approved)
+	  admin_user.save  
+	  expect(patch(:update, params: { 
+	    id: admin_user.organization.id, organization: attributes_for(:organization) 
+	  } )).to redirect_to(organizations_path + "/" + admin_user.organization.id.to_s)  
 	end
 	
 	specify 'GET #show' do

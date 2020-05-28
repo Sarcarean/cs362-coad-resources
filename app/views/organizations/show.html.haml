@@ -5,6 +5,8 @@
 - else
   %h1.mt-5= @organization.name
 
+= link_to 'Edit Organization', edit_organization_path(@organization), class: 'btn btn-primary'
+
 - if current_user.admin?
   .row.mt-5
     .col-1 &#9989;
