@@ -41,7 +41,11 @@ RSpec.describe User, type: :model do
 			user.password = nil
 			expect(user).to_not be_valid(:email)
 		end
-
+		
+		it "has a valid password with valid length" do
+			expect(user).to validate_length_of(:password).is_at_least(7).is_at_most(255)
+		end
+		
 	end
 	
 	describe "#to_s" do
