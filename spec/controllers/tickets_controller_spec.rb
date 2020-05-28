@@ -82,5 +82,10 @@ RSpec.describe TicketsController, type: :controller do
 				ticket.save
 				expect(post(:create, params: { ticket: attributes_for(:ticket) } )).to be_successful
 			end
+
+			specify 'GET #show' do	
+				ticket = create(:ticket)
+				expect(get(:show, params: {id: ticket.id})).to be_successful
+			end
 		end
 end
