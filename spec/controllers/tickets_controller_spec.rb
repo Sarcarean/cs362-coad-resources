@@ -64,5 +64,8 @@ RSpec.describe TicketsController, type: :controller do
 				specify { expect(patch(:close, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
 
+			describe 'DELETE #destroy' do
+				specify { expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			end
 		end
 end
