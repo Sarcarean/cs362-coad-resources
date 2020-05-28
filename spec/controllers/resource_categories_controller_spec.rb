@@ -76,5 +76,9 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 			describe 'PATCH #deactivate' do	 
 				specify { expect(patch(:deactivate, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
+
+			describe 'DELETE #destroy' do
+				specify { expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			end
 		end
 end
