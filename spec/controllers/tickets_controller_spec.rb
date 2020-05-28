@@ -21,5 +21,9 @@ RSpec.describe TicketsController, type: :controller do
 			describe 'POST #capture' do
 				specify { expect(post(:capture, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
+
+			describe 'POST #release' do
+				specify { expect(post(:release, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			end
     end
 end
