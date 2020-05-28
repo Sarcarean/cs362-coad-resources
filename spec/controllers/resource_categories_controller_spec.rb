@@ -90,12 +90,18 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 				specify { expect(get(:index)).to be_successful }
 			end
 
-			specify 'GET #new' do	 
-				expect(get(:new)).to be_successful
+			describe 'GET #new' do	 
+				specify { expect(get(:new)).to be_successful }
 			end
 
-			specify 'POST #create' do
-				expect(post(:create, params: { resource_category: attributes_for(:resource_category) } )).to redirect_to(resource_categories_path)
+			describe 'POST #create' do
+				specify { expect(post(:create, params: { resource_category: attributes_for(:resource_category) } )).to redirect_to(resource_categories_path) }
+			end
+
+			specify 'GET #edit' do
+				admin_user = create(:resource_category)
+				admin_user.save
+				expect(get(:edit, params: { id: admin_user.id })).to be_successful
 			end
 		end
 end
