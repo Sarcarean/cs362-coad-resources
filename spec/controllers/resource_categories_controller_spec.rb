@@ -90,5 +90,8 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 				specify { expect(get(:index)).to be_successful }
 			end
 
+			specify 'GET #new' do	 
+				expect(get(:new)).to be_successful
+			end
 		end
 end
