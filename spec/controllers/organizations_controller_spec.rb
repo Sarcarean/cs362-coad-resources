@@ -102,7 +102,11 @@ RSpec.describe OrganizationsController, type: :controller do
 	end	
 	
 	specify 'PATCH #update' do	 
-		expect(patch(:update, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+	  admin_user.organization = create(:organization, :approved)
+	  admin_user.save  
+	  expect(patch(:update, params: { 
+	    id: admin_user.organization.id, organization: attributes_for(:organization) 
+	  } )).to redirect_to(organizations_path + "/" + admin_user.organization.id.to_s)  
 	end
 	
 	specify 'GET #show' do
@@ -118,14 +122,14 @@ RSpec.describe OrganizationsController, type: :controller do
 	  expect(post(:approve, params: { id: user.organization.id } )).to redirect_to("/organizations")	
 	end
 
-    #WORKING ON THIS:
 	specify 'POST #reject' do
 	  user = create(:user, role: 'organization')
 	  user.organization = create(:organization, :submitted)
 	  user.save
-	  #expect(post(:reject, params: { id: user.organization.id } )).to redirect_to("/organizations")			
+	  expect(post(:reject, params: { id: user.organization.id, organization: {rejection_reason: 'FAKE'} } )).to redirect_to("/organizations")			
 	end
-
+	
+	
   end
 
 
