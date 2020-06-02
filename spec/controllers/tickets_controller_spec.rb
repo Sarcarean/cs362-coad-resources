@@ -14,9 +14,8 @@ RSpec.describe TicketsController, type: :controller do
 				expect(post(:create, params: { ticket: attributes_for(:ticket) } )).to be_successful
 			end
 
-			# NoMethodError : admin? 
 			describe 'GET #show' do
-			specify { expect(get(:show, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+				specify { expect(get(:show, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
 
 			describe 'POST #capture' do
@@ -27,7 +26,9 @@ RSpec.describe TicketsController, type: :controller do
 				specify { expect(post(:release, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
 			end
 
-			# TODO : #close
+			describe 'PATCH #close' do
+				specify { expect(patch(:close, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
+			end
 
 			describe 'DELETE #destroy' do
 				specify { expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(dashboard_path) }
