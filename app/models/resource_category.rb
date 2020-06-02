@@ -1,3 +1,7 @@
+# Comment by R.Harris
+# This object is what creates the different resources for the organizations.
+# General resources and more specified resources are used.
+
 class ResourceCategory < ApplicationRecord
 
   has_and_belongs_to_many :organizations

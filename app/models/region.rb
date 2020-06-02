@@ -1,3 +1,6 @@
+# Comment by R.Harris
+# This object is the geographical area in which tickets reside.
+
 class Region < ApplicationRecord
 
   has_many :tickets

@@ -1,3 +1,7 @@
+# Comment by R.Harris
+# This object represents a user and associated properties. A user can be a normal organization
+# user, or it can be an administrator.
+
 class User < ApplicationRecord
 
   enum role: [:admin, :organization]

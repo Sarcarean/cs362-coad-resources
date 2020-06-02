@@ -1,3 +1,7 @@
+# Comment by R.Harris
+# This object is a ticket that contains an association to an organization.
+# A user will create a ticket and then its assigned to the user's orgnization
+
 class Ticket < ApplicationRecord
 
   belongs_to :region
