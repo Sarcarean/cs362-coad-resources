@@ -109,6 +109,11 @@ RSpec.describe ResourceCategoriesController, type: :controller do
 				expect(patch(:update, params: { id: resource_category.id, resource_category: attributes_for(:resource_category) })).to redirect_to(resource_categories_path + "/" + resource_category.id.to_s)
 			end
 
+			specify 'PATCH #activate' do
+				resource_category = create(:resource_category)
+				expect(patch(:activate, params: { id: resource_category.id, resource_category: attributes_for(:resource_category) })).to redirect_to(resource_categories_path + "/" + resource_category.id.to_s)
+			end
+
 			# TODO : #activate & #deactivate
 
 			specify 'DELETE #destroy' do
