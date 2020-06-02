@@ -17,7 +17,27 @@ RSpec.describe DashboardController, type: :controller do
     specify 'GET #index' do
       expect(get(:index)).to be_successful
     end
-    
+	
+    specify 'Get Open tickets' do
+      expect(get(:index, params: { status: 'Open' })).to be_successful
+    end	
+	
+    specify 'Get Closed tickets' do
+      expect(get(:index, params: { status: 'Closed' })).to be_successful
+    end	
+	
+    specify 'Get Captured tickets' do
+      expect(get(:index, params: { status: 'Captured' })).to be_successful
+    end	
+
+    specify 'Get My Captured tickets' do
+      expect(get(:index, params: { status: 'My Captured' })).to be_successful
+    end		
+	
+    specify 'Get My Closed tickets' do
+      expect(get(:index, params: { status: 'My Closed' })).to be_successful
+    end	
+	
   end
 
   context 'As an admin user' do
@@ -29,4 +49,5 @@ RSpec.describe DashboardController, type: :controller do
     end
 
   end
+  
 end

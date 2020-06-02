@@ -2,42 +2,34 @@ require 'rails_helper'
 
 RSpec.describe 'Updating an Organization', type: :feature do
 
-  #let(:organization) { create(:organization) }
-  #let(:admin_user) { create(:user, :admin) }
+  let(:organization) { create(:organization, :approved) }
+  let(:admin_user) { create(:user, :admin) }
+  let(:user) { create(:user, organization: organization) }
   
-  context 'as admin' do 
-    it 'updating an org successfully' do
-	
-	  #admin_user.confirm
-	  #log_in_as(admin_user)
-	
-	  #visit edit_organization_path(organization)
-	  #fill_in(:name).with('New Fake Name')
-	  
-	  #fill_in 'Name', with: 'New Fake Name'
-	  
-	  #click 'Save'
-	  #expect(page).to have_content("New Fake Name")
+  context 'as an admin' do 
+    it 'updating successfully' do
+	  log_in_as(admin_user)
+	  visit edit_organization_path(organization)
+	  fill_in 'organization_name', with: 'Tesla Inc.'
+	  fill_in 'organization_phone', with: '541-555-7894'
+	  fill_in 'organization_email', with: 'contact@tesla.com'
+	  fill_in 'organization_description', with: 'Organizions need change'
+	  click_button('commit')
+	  expect(current_path).to eq(organization_path(organization))
 	end
   end
   
-  context 'as org user' do
-    
-	let(:user) { create(:user) }
-	let(:organization) { create(:organization, :approved) }
+  context 'as an organization user' do
 	
-	before do
-	  user.organization = organization
-	  user.save
-	end
-	
-	it 'updating an org successfully' do
-	  #visit edit_organization_path(organization)
-	  #fill_in(:name).with('New Fake Name')
-	  #fill_in 'Name', with: 'New Fake Name'
-	   
-	  #click 'Save'
-	  #expect(page).to have_content('New Fake Name')  
+	it 'updating successfully' do
+	  log_in_as(user)
+	  visit edit_organization_path(organization)
+	  fill_in 'organization_name', with: 'Tesla Inc.'
+	  fill_in 'organization_phone', with: '541-555-7894'
+	  fill_in 'organization_email', with: 'contact@tesla.com'
+	  fill_in 'organization_description', with: 'Organizions need change'
+	  click_button('commit')
+	  expect(current_path).to eq(organization_path(organization))
 	end
 	
   end

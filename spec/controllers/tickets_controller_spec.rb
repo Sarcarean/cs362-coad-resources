@@ -38,7 +38,7 @@ RSpec.describe TicketsController, type: :controller do
   end
 
   context 'As an organization user' do
-    let(:user) { create(:user) }	
+    let(:user) { create(:user, role: 'organization') }	
     before(:each) { sign_in(user) }
 
     specify 'GET #new' do	 
@@ -52,21 +52,47 @@ RSpec.describe TicketsController, type: :controller do
     end
 
     specify 'GET #show' do
-	  expect(get(:show, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+	  expect(get(:show, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)  
     end
 
-    specify 'POST #capture' do
-	  expect(post(:capture, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+    specify 'POST #capture' do  
+	  expect(post(:capture, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)  
     end
-
-    specify 'POST #release' do
-	  expect(post(:release, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+	
+    specify 'POST #release' do    
+      user.organization = create(:organization, :approved)  
+	  myticket = create(:ticket, :open)
+	  myticket.organization_id = user.organization_id  
+	  myticket.save
+	  user.save	  	  
+	  expect(post(:release, params: { id: myticket.id } )).to redirect_to(dashboard_path + "#tickets:organization")
     end
-
+	
+    specify 'POST #release but with an unassigned ticket' do	  
+	  user.organization = create(:organization, :approved)  
+	  myticket = create(:ticket, :open)
+	  myticket.save
+	  user.save
+	  expect(post(:release, params: { id: myticket.id } )).to be_successful
+    end	
+	
     specify 'PATCH #close' do
-	  expect(patch(:close, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+      user.organization = create(:organization, :approved)  
+	  myticket = create(:ticket, :open)
+	  myticket.organization_id = user.organization_id  
+	  myticket.save
+	  user.save
+	  expect(patch(:close, params: { id: myticket.id } )).to redirect_to(dashboard_path + "#tickets:organization")	
     end
-
+	
+    specify 'PATCH #close but fails because user does not own ticket' do
+      user.organization = create(:organization, :approved)  
+	  myticket = create(:ticket, :open)
+	  myticket.save
+	  user.save
+	  expect(patch(:close, params: { id: myticket.id } )).to be_successful
+    end	
+	
     specify 'DELETE #destroy' do
 	  expect(delete(:destroy, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
     end
@@ -92,11 +118,21 @@ RSpec.describe TicketsController, type: :controller do
     end
 
     specify 'POST #capture' do
-	  expect(post(:capture, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+	  expect(post(:capture, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)  
     end
 
-    specify 'POST #release' do
-	  expect(post(:release, params: { id: 'FAKE' } )).to redirect_to(dashboard_path)
+    specify 'POST #release' do	  
+	  admin_user.organization = create(:organization, :approved)  
+	  myticket = create(:ticket, :open)
+	  myticket.organization_id = admin_user.organization_id  
+	  myticket.save
+	  admin_user.save
+	  expect(post(:release, params: { id: myticket.id } )).to redirect_to(dashboard_path + "#tickets:captured")	  
+    end
+
+    specify 'PATCH #close' do
+	  ticket = create(:ticket) 
+	  expect(patch(:close, params: { id: ticket.id } )).to redirect_to(dashboard_path + "#tickets:open")	  
     end
 
     specify 'DELETE #destroy' do
@@ -104,5 +140,6 @@ RSpec.describe TicketsController, type: :controller do
 	  expect(delete(:destroy, params: { id: ticket.id } )).to redirect_to(dashboard_path + "#tickets")
     end
   end
+  
   
 end
